@@ -1,0 +1,16 @@
+{
+  "name": "Gamefroot-Api-client",
+  "version": "0.0.1",
+  "description": "An easy way to interact with gamefroot's api",
+  "keywords": [
+    "gamefroot",
+    "api"
+  ],
+  "license": "MIT",
+  "author": "Gamefroot Team",
+  "dependencies": {
+      "superagent": "latest",
+      "lodash": "latest"
+  },
+  "devDependencies": {}
+}

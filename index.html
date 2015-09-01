@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script type="text/javascript" src="build/gamefroot.js"></script>
+    </head>
+    <body>
+
+
+        <script>
+            window.onload = function(){
+                var leaderboard = new Gamefroot.Leaderboard({
+                    id: "<leaderboard id>",
+                    client_id: "<clientID>"
+                });
+
+
+                leaderboard.set(322, 9445, null, function( score ){
+                    leaderboard.get({ scoreID: score.score_id }, function( score ){
+                        console.log( score );
+                    });
+
+
+                    leaderboard.get(null, function( scores ){
+                        console.log( scores );
+                    });
+                });
+            }
+        </script>
+    </body>
+</html>
