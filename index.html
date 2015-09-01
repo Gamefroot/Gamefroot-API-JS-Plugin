@@ -3,24 +3,27 @@
         <script type="text/javascript" src="build/gamefroot.js"></script>
     </head>
     <body>
-
+        <div class="holder"></div>
 
         <script>
             window.onload = function(){
+                var holder = document.querySelector(".holder");
+
                 var leaderboard = new Gamefroot.Leaderboard({
-                    id: "<leaderboard id>",
-                    client_id: "<clientID>"
+                    id: "<leaderboardid>",
+                    client_id: "<client_id>"
                 });
 
-
-                leaderboard.set(322, 9445, null, function( score ){
-                    leaderboard.get({ scoreID: score.score_id }, function( score ){
-                        console.log( score );
-                    });
-
-
-                    leaderboard.get(null, function( scores ){
-                        console.log( scores );
+                leaderboard.set( 500, 9554, null, function( response ){
+                    leaderboard.get(null, function( response ){
+                        var data = response.scores;
+                        if ( data ){
+                            var text = "";
+                            for (var i = 0; i < data.length; i++){
+                                text += "<span><img src='" + data[i].user.image + "' /><p> user " + data[i].user.username + " got score: " + data[i].score + "</p></span>";
+                            }
+                            holder.innerHTML = text;
+                        }
                     });
                 });
             }

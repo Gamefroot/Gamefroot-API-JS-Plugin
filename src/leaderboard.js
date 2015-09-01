@@ -45,9 +45,12 @@ leaderboard.prototype.set = function( score, user, tag, callback ){
 
 
 leaderboard.prototype.get = function( options, callback ){
-    if ( options == null ){
+    if ( options == null || options.order ){
+        options = {};
         //just get all the scores...
-        api.get( "/leaderboards/" + this.id, {}, {
+        api.get( "/leaderboards/" + this.id, {
+            order: options.order || "id DESC"
+        }, {
             client_id: this.client_id
         }, function( score ){
             //yay, done
